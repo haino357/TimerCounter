@@ -28,6 +28,7 @@ final class TimerModel {
 
     private var endDate: Date?
     private var ticker: Timer?
+    private let notifier = CompletionNotifier()
 
     init() {
         let defaults = UserDefaults.standard
@@ -50,6 +51,7 @@ final class TimerModel {
 
     func start() {
         guard !isRunning, remaining > 0 else { return }
+        notifier.requestAuthorization()
         endDate = Date().addingTimeInterval(TimeInterval(remaining))
         isRunning = true
         let timer = Timer(timeInterval: 0.25, repeats: true) { [weak self] _ in
@@ -91,6 +93,7 @@ final class TimerModel {
         remaining = duration
         count += 1
         NSSound(named: "Glass")?.play()
+        notifier.notifyCompletion(minutes: duration / 60, count: count)
     }
 
     // MARK: - カウンター
