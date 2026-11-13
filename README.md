@@ -38,6 +38,20 @@ xcodebuild -project TimerCounter.xcodeproj -scheme TimerCounter -configuration D
 open build/Build/Products/Debug/TimerCounter.app
 ```
 
+### アイコンから起動できるようにする（インストール）
+
+次のスクリプトは Release ビルドを作り、`/Applications` に `TimerCounter.app` を入れます。
+
+```bash
+scripts/install.sh
+```
+
+入れたあとは、Finder のアプリケーションフォルダ、Launchpad、Spotlight（⌘Space で「TimerCounter」）からアイコンで起動できます。ソースを変更したときは、もう一度実行すると入れ替わります。
+
+- インストール先を変えるには、引数でフォルダを指定します（例: `scripts/install.sh ~/Applications`）
+- アンインストールは `/Applications/TimerCounter.app` をゴミ箱に入れるだけです
+- ログイン時に自動で起動したい場合は、システム設定 →「一般」→「ログイン項目」に追加します
+
 署名はローカル実行用のアドホック署名（`CODE_SIGN_IDENTITY = "-"`）です。開発チームの設定は不要ですが、他の Mac への配布には別途 Developer ID 署名と公証が必要です。
 
 ## 使い方
@@ -59,10 +73,20 @@ open build/Build/Products/Debug/TimerCounter.app
 ```
 TimerCounter/
 ├── TimerCounter.xcodeproj/     Xcode プロジェクト
-└── TimerCounter/
-    ├── TimerCounterApp.swift   エントリポイント。MenuBarExtra の定義
-    ├── PanelView.swift         メニューバーから開くパネルの UI
-    └── TimerModel.swift        タイマーとカウンターの状態・ロジック
+├── TimerCounter/
+│   ├── TimerCounterApp.swift   エントリポイント。MenuBarExtra の定義
+│   ├── PanelView.swift         メニューバーから開くパネルの UI
+│   ├── TimerModel.swift        タイマーとカウンターの状態・ロジック
+│   └── Assets.xcassets/        アプリアイコン（AppIcon）
+└── scripts/
+    ├── install.sh              Release ビルドしてアプリケーションフォルダに入れる
+    └── make_icon.swift         アプリアイコンの PNG を生成する
+```
+
+アイコンのデザインを変えるときは、`scripts/make_icon.swift` を編集してから次を実行します。
+
+```bash
+swift scripts/make_icon.swift TimerCounter/Assets.xcassets/AppIcon.appiconset
 ```
 
 `TimerCounter/` フォルダは Xcode のファイルシステム同期グループなので、このフォルダにファイルを追加すれば自動でターゲットに含まれます。
