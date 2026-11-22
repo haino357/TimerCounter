@@ -6,104 +6,7 @@
   <meta name="description" content="Macのメニューバーアプリ Tally Timer の使い方、通知の設定、不具合のお問い合わせ窓口です。">
   <title>Tally Timer サポート</title>
   <link rel="icon" href="app-icon.png" type="image/png">
-  <style>
-    :root {
-      color-scheme: light dark;
-      --background: #fffbf9;
-      --surface: #fff;
-      --text: #2a201e;
-      --muted: #62524e;
-      --line: #e9dad5;
-      --accent: #a43123;
-      --button: #a43123;
-      --button-text: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --background: #1d1715;
-        --surface: #2a201e;
-        --text: #fff2ed;
-        --muted: #d4bcb3;
-        --line: #4e3c37;
-        --accent: #ffab96;
-        --button: #ffab96;
-        --button-text: #2a201e;
-      }
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.75;
-    }
-
-    a { color: var(--accent); text-underline-offset: .2em; }
-    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-
-    .shell { width: min(100% - 2rem, 46rem); margin-inline: auto; }
-    header { padding-block: clamp(2.5rem, 9vw, 5rem) 2rem; }
-
-    .identity {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    h1, h2, p { margin: 0; }
-    h1 { font-size: clamp(1.65rem, 5.5vw, 2.65rem); line-height: 1.35; letter-spacing: -.035em; }
-    h2 { font-size: 1.35rem; line-height: 1.4; letter-spacing: -.025em; }
-    header p { margin-top: .55rem; color: var(--muted); }
-    header img { flex: none; width: clamp(3rem, 10vw, 4.25rem); height: auto; }
-
-    main { display: grid; gap: 1rem; }
-    section {
-      padding: clamp(1.15rem, 4vw, 1.8rem);
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 1rem;
-    }
-
-    ol { margin: .7rem 0 0; padding-inline-start: 1.55rem; }
-    li + li { margin-top: .45rem; }
-    li::marker { color: var(--accent); font-weight: 650; }
-
-    details { border-bottom: 1px solid var(--line); }
-    details:first-of-type { margin-top: .65rem; }
-    details:last-child { border-bottom: 0; }
-    summary { cursor: pointer; font-weight: 650; padding-block: .7rem; }
-    details p { color: var(--muted); padding-bottom: .85rem; }
-
-    .contact p { margin-top: .7rem; color: var(--muted); }
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
-      margin-top: 1rem;
-      padding: .45rem 1rem;
-      border-radius: .55rem;
-      background: var(--button);
-      color: var(--button-text);
-      font-weight: 650;
-      text-decoration: none;
-    }
-    .contact-link:hover { text-decoration: underline; }
-    .contact .note { font-size: .9rem; }
-
-    footer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: .5rem 1.25rem;
-      padding-block: 1.25rem 2.5rem;
-      font-size: .9rem;
-      color: var(--muted);
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="shell">
@@ -154,7 +57,7 @@
 
   <footer class="shell">
     <span>開発者 Takayuki Shoji</span>
-    <a href="https://github.com/haino357/TimerCounter/blob/main/PRIVACY.md">プライバシーポリシー</a>
+    <a href="privacy/">プライバシーポリシー</a>
   </footer>
 </body>
 </html>
