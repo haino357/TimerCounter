@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Macのメニューバーアプリ Tally Timer の使い方、通知の設定、不具合のお問い合わせ窓口です。">
+  <title>Tally Timer サポート</title>
+  <link rel="icon" href="app-icon.png" type="image/png">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #fffbf9;
+      --surface: #fff;
+      --text: #2a201e;
+      --muted: #62524e;
+      --line: #e9dad5;
+      --accent: #a43123;
+      --button: #a43123;
+      --button-text: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #1d1715;
+        --surface: #2a201e;
+        --text: #fff2ed;
+        --muted: #d4bcb3;
+        --line: #4e3c37;
+        --accent: #ffab96;
+        --button: #ffab96;
+        --button-text: #2a201e;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .shell { width: min(100% - 2rem, 46rem); margin-inline: auto; }
+    header { padding-block: clamp(2.5rem, 9vw, 5rem) 2rem; }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(1.65rem, 5.5vw, 2.65rem); line-height: 1.35; letter-spacing: -.035em; }
+    h2 { font-size: 1.35rem; line-height: 1.4; letter-spacing: -.025em; }
+    header p { margin-top: .55rem; color: var(--muted); }
+    header img { flex: none; width: clamp(3rem, 10vw, 4.25rem); height: auto; }
+
+    main { display: grid; gap: 1rem; }
+    section {
+      padding: clamp(1.15rem, 4vw, 1.8rem);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+    }
+
+    ol { margin: .7rem 0 0; padding-inline-start: 1.55rem; }
+    li + li { margin-top: .45rem; }
+    li::marker { color: var(--accent); font-weight: 650; }
+
+    details { border-bottom: 1px solid var(--line); }
+    details:first-of-type { margin-top: .65rem; }
+    details:last-child { border-bottom: 0; }
+    summary { cursor: pointer; font-weight: 650; padding-block: .7rem; }
+    details p { color: var(--muted); padding-bottom: .85rem; }
+
+    .contact p { margin-top: .7rem; color: var(--muted); }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 1rem;
+      padding: .45rem 1rem;
+      border-radius: .55rem;
+      background: var(--button);
+      color: var(--button-text);
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .contact-link:hover { text-decoration: underline; }
+    .contact .note { font-size: .9rem; }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: .5rem 1.25rem;
+      padding-block: 1.25rem 2.5rem;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <div class="identity">
+      <img src="app-icon.png" width="128" height="128" alt="">
+      <h1>Tally Timer サポート</h1>
+    </div>
+    <p>Macのメニューバーで使うタイマーと完了回数カウンター。macOS 14（Sonoma）以降に対応しています。</p>
+  </header>
+
+  <main class="shell">
+    <section aria-labelledby="start">
+      <h2 id="start">タイマーの使い方</h2>
+      <ol>
+        <li>Tally Timerを起動し、メニューバーの残り時間をクリックします。</li>
+        <li>操作パネルの「長さ」で1〜180分を選び、「開始」を押します。</li>
+        <li>タイマーが終わると完了回数が1増えます。次のセットは、もう一度「開始」を押してください。</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">よくある質問</h2>
+      <details>
+        <summary>起動後、どこから操作できますか？</summary>
+        <p>画面上部のメニューバーに残り時間と完了回数が表示されます。その表示をクリックすると操作パネルが開きます。</p>
+      </details>
+      <details>
+        <summary>タイマーの完了通知が出ないときは？</summary>
+        <p>macOSの「システム設定 → 通知 → Tally Timer」で通知を許可してください。通知を確認したいときは、「長さ」を1分に設定して試せます。</p>
+      </details>
+      <details>
+        <summary>タイマーの長さを変更するには？</summary>
+        <p>実行中は「一時停止」を押してから、「長さ」を変更してください。</p>
+      </details>
+      <details>
+        <summary>完了回数の調整やリセットはできますか？</summary>
+        <p>操作パネルの「＋」「−」で調整でき、「0 に戻す」を押すとリセットできます。タイマーの長さと完了回数は、アプリを終了してもMacに保存されます。</p>
+      </details>
+    </section>
+
+    <section class="contact" aria-labelledby="contact">
+      <h2 id="contact">お問い合わせ</h2>
+      <p>不具合、使い方の質問、機能の要望は、開発者が管理するGitHub Issuesで受け付けています。不具合の場合は、macOSとアプリのバージョン、問題が起きたときの操作を添えてください。</p>
+      <a class="contact-link" href="https://github.com/haino357/TimerCounter/issues/new">GitHubで問い合わせる</a>
+      <p class="note">投稿にはGitHubアカウントが必要です。投稿内容は公開されるため、個人情報は記載しないでください。<a href="https://github.com/haino357/TimerCounter/issues">既存の問い合わせを見る</a></p>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>開発者 Takayuki Shoji</span>
+    <a href="https://github.com/haino357/TimerCounter/blob/main/PRIVACY.md">プライバシーポリシー</a>
+  </footer>
+</body>
+</html>
