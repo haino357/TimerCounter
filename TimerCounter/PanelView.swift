@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PanelView: View {
+    private static let privacyPolicyURL = URL(string: "https://github.com/haino357/TimerCounter/blob/main/PRIVACY.md")!
+
     @Bindable var model: TimerModel
 
     private var minutes: Binding<Int> {
@@ -54,8 +56,13 @@ struct PanelView: View {
 
             Divider()
 
-            Button("終了") { NSApplication.shared.terminate(nil) }
-                .keyboardShortcut("q")
+            VStack(spacing: 8) {
+                Link("プライバシーポリシー", destination: Self.privacyPolicyURL)
+                    .font(.caption)
+
+                Button("終了") { NSApplication.shared.terminate(nil) }
+                    .keyboardShortcut("q")
+            }
         }
         .padding(16)
         .frame(width: 240)
