@@ -1,4 +1,4 @@
-# TimerCounter
+# Tally Timer
 
 メニューバーに常駐する、タイマーと完了回数カウンターの macOS アプリです。
 タイマーが 1 回完了するたびにカウンターが 1 増えるので、ポモドーロのような「何セットやったか」を数える用途に使えます。
@@ -21,6 +21,14 @@
 | 言語 / UI | Swift 5 / SwiftUI（`MenuBarExtra`、Observation） |
 | 外部依存 | なし |
 
+## インストール
+
+1. [GitHub Releases](https://github.com/haino357/TimerCounter/releases) から `Tally-Timer-1.0.0.zip` をダウンロードします。
+2. ZIP を展開し、`TimerCounter.app` を「アプリケーション」フォルダに移動します。
+3. アプリを起動し、メニューバーのタイマー表示をクリックします。
+
+配布用アプリは Apple シリコンと Intel Mac の両方に対応しています。
+
 ## ビルドと実行
 
 ### Xcode から
@@ -38,7 +46,7 @@ xcodebuild -project TimerCounter.xcodeproj -scheme TimerCounter -configuration D
 open build/Build/Products/Debug/TimerCounter.app
 ```
 
-### アイコンから起動できるようにする（インストール）
+### ソースからインストールする
 
 次のスクリプトは Release ビルドを作り、`/Applications` に `TimerCounter.app` を入れます。
 
@@ -46,13 +54,13 @@ open build/Build/Products/Debug/TimerCounter.app
 scripts/install.sh
 ```
 
-入れたあとは、Finder のアプリケーションフォルダ、Launchpad、Spotlight（⌘Space で「TimerCounter」）からアイコンで起動できます。ソースを変更したときは、もう一度実行すると入れ替わります。
+入れたあとは、Finder のアプリケーションフォルダや Spotlight（⌘Space で「Tally Timer」）から起動できます。ソースを変更したときは、もう一度実行すると入れ替わります。
 
 - インストール先を変えるには、引数でフォルダを指定します（例: `scripts/install.sh ~/Applications`）
 - アンインストールは `/Applications/TimerCounter.app` をゴミ箱に入れるだけです
 - ログイン時に自動で起動したい場合は、システム設定 →「一般」→「ログイン項目」に追加します
 
-署名はローカル実行用のアドホック署名（`CODE_SIGN_IDENTITY = "-"`）です。開発チームの設定は不要ですが、他の Mac への配布には別途 Developer ID 署名と公証が必要です。
+このスクリプトは Xcode プロジェクトの Release 署名設定を使います。ソースからビルドする場合は、Xcode の `Signing & Capabilities` で利用可能な開発チームを選択してください。GitHub Releases の配布用アプリには Developer ID 署名と公証が付いています。
 
 ## 使い方
 
@@ -65,7 +73,7 @@ scripts/install.sh
 補足:
 
 - 初めて「開始」を押したときに、通知の許可を求める確認が出ます。「許可」を選ぶと、完了時に通知が表示されます
-- 通知を止める・再び出すには、システム設定 →「通知」→「TimerCounter」で切り替えます。通知を切っていてもサウンドは鳴ります
+- 通知を止める・再び出すには、システム設定 →「通知」→「Tally Timer」で切り替えます。通知を切っていてもサウンドは鳴ります
 - タイマーの長さは、タイマーの実行中は変更できません
 - 完了後に次の回は自動では始まりません。もう一度「開始」を押してください
 - 完了回数は 0 未満にはなりません
@@ -102,7 +110,7 @@ swift scripts/make_icon.swift TimerCounter/Assets.xcassets/AppIcon.appiconset
 
 ## 保存データ
 
-`UserDefaults`（ドメイン `local.TimerCounter`）に次の 2 つを保存します。
+`UserDefaults`（ドメイン `io.github.haino357.timercounter`）に次の 2 つを保存します。
 
 | キー | 内容 |
 | --- | --- |
@@ -114,13 +122,13 @@ swift scripts/make_icon.swift TimerCounter/Assets.xcassets/AppIcon.appiconset
 保存データを消して初期状態に戻すには、アプリを終了してから次を実行します。
 
 ```bash
-defaults delete local.TimerCounter
+defaults delete io.github.haino357.timercounter
 ```
 
 ## 基本情報
 
 | 項目 | 内容 |
 | --- | --- |
-| バージョン | 0.1 |
-| Bundle Identifier | `local.TimerCounter` |
+| バージョン | 1.0.0 |
+| Bundle Identifier | `io.github.haino357.timercounter` |
 | ターゲット / スキーム | `TimerCounter` |
