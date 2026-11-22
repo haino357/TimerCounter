@@ -1,0 +1,73 @@
+.app-page .shell {
+  width: min(100% - 2rem, 70rem);
+}
+
+.app-header,
+.app-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .65rem 1.5rem;
+}
+
+.app-header {
+  justify-content: space-between;
+  padding-block: 1.25rem;
+}
+
+.app-identity {
+  gap: .5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.app-identity img { width: 2.5rem; }
+.app-nav a { padding-block: .55rem; }
+
+.app-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+.app-intro h1 {
+  font-size: clamp(2rem, 4.5vw, 3.65rem);
+  text-wrap: balance;
+}
+
+.app-intro h1 span { display: inline-block; }
+
+.app-intro p {
+  margin-top: 1.25rem;
+  color: var(--muted);
+}
+
+.app-intro .app-requirements {
+  margin-top: .65rem;
+  font-size: .9rem;
+}
+
+.app-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .8rem;
+}
+
+.app-guide {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: .75rem 1.5rem;
+  padding-inline: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+.app-guide ol { margin: 0; }
+
+@media (max-width: 42rem) {
+  .app-hero,
+  .app-guide { grid-template-columns: 1fr; }
+
+  .app-preview { max-width: 27rem; margin-inline: auto; }
+}
